@@ -1,0 +1,72 @@
+[
+    {
+        "codigo": "10032",
+        "codigo_oem": "35056803",
+        "descricao": "PARAFUSO PH 4.2X19 CARCACA INFERIOR PANEL – TITAN125 1995 A 1999/TODAY125 1989 A 1994 – CISER",
+        "valor": "0,20",
+        "sku": "10032",
+        "categoria": "fixacao",
+        "tag": "nacional",
+        "marca": "CISER",
+        "aplicacoes": "TITAN125 1995 A 1999/TODAY125 1989 A 1994",
+        "imagens": [
+            "/data/img/10032.jpg"
+        ]
+    },
+    {
+        "codigo": "12611",
+        "codigo_oem": "14535-437-000",
+        "descricao": "12611 – PARAFUSO DO TENSOR DA CORRENTE DE COMANDO – XR200 1994 1995 1996 1997 1998 1999 2000 2001 2002 – TRILHA",
+        "valor": "1,00",
+        "sku": "12611",
+        "categoria": "fixacao",
+        "tag": "nacional",
+        "marca": "TRILHA",
+        "aplicacoes": "CBX200 1994 1995 1996 1997 1998 1999 2000 2001 2002 NX200 1993 1994 1995 1996 1997 1998 1999 2000 2001 XR200 1994 1995 1996 1997 1998 1999 2000 2001 2002",
+        "imagens": [
+            "/data/img/12611.jpg"
+        ]
+    },
+    {
+        "codigo": "1012",
+        "codigo_oem": "361",
+        "descricao": "1012 – ADESIVO KIT AZUL – BIZ100 1998 – JOTAESSE",
+        "valor": "1,00",
+        "sku": "1012",
+        "categoria": "Carenagem/Plásticos",
+        "tag": "nacional",
+        "marca": "JOTAESSE",
+        "aplicacoes": "BIZ100 1998",
+        "imagens": [
+            "/data/img/1012.jpg"
+        ]
+    },
+    {
+        "codigo": "10365",
+        "codigo_oem": "642",
+        "descricao": "10365 – ADESIVO KIT VERMELHO – TWISTER250 2005 – JOTAESSE",
+        "valor": "12,62",
+        "sku": "10365",
+        "categoria": "Carenagem/Plásticos",
+        "tag": "nacional",
+        "marca": "JOTAESSE",
+        "aplicacoes": "TWISTER250 2005",
+        "imagens": [
+            "/data/img/10365.jpg"
+        ]
+    },
+    {
+        "codigo": "11461",
+        "codigo_oem": "662",
+        "descricao": "11461 – ADESIVO KIT AZUL – NXR125 ES 2005 – JOTAESSE",
+        "valor": "16,67",
+        "sku": "11461",
+        "categoria": "Carenagem/Plásticos",
+        "tag": "nacional",
+        "marca": "JOTAESSE",
+        "aplicacoes": "TWISTER250 2005",
+        "imagens": [
+            "/data/img/11461.jpg"
+        ]
+    }
+]

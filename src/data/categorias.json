@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1",
+        "categoria": "caregangem_plasticos",
+        "icone": "FaCogs"
+    },
+    {
+        "id": "2",
+        "categoria": "chassi",
+        "icone": "FaCar"
+    },
+    {
+        "id": "3",
+        "categoria": "elétrica",
+        "icone": "FaBolt"
+    },
+    {
+        "id": "4",
+        "categoria": "ferramentas/equipamentos",
+        "icone": "FaWrench"
+    },
+    {
+        "id": "5",
+        "categoria": "rodas",
+        "icone": "FaCircle"
+    },
+    {
+        "id": "6",
+        "categoria": "suspensão",
+        "icone": "FaCarSide"
+    },
+    {
+        "id": "7",
+        "categoria": "transmissão",
+        "icone": "FaCog"
+    },
+    {
+        "id": "8",
+        "categoria": "acessórios",
+        "icone": "FaCogs"
+    },
+    {
+        "id": "9",
+        "categoria": "carburadores/injeção",
+        "icone": "FaTachometerAlt"
+    },
+    {
+        "id": "10",
+        "categoria": "fixação",
+        "icone": "FaScrewdriver"
+    },
+    {
+        "id": "11",
+        "categoria": "cabos",
+        "icone": "FaPlug"
+    },
+    {
+        "id": "12",
+        "categoria": "motor",
+        "icone": "FaMotorcycle"
+    }
+]
