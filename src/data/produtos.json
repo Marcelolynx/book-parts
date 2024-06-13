@@ -56,6 +56,20 @@
         ]
     },
     {
+        "codigo": "10364",
+        "codigo_oem": "490",
+        "descricao": "10364 – ADESIVO KIT PRETO – CBX200 2002 – JOTAESSE",
+        "valor": "25,23",
+        "sku": "10364",
+        "categoria": "Carenagem/Plásticos",
+        "tag": "nacional",
+        "marca": "JOTAESSE",
+        "aplicacoes": "CBX200 2002",
+        "imagens": [
+            "/data/img/10364.jpg"
+        ]
+    },
+    {
         "codigo": "11461",
         "codigo_oem": "662",
         "descricao": "11461 – ADESIVO KIT AZUL – NXR125 ES 2005 – JOTAESSE",
@@ -67,6 +81,90 @@
         "aplicacoes": "TWISTER250 2005",
         "imagens": [
             "/data/img/11461.jpg"
+        ]
+    },
+    {
+        "codigo": "1015",
+        "codigo_oem": "359",
+        "descricao": "1015 – ADESIVO KIT VERMELHO – BIZ100 1998 – JOTAESSE",
+        "valor": "12,62",
+        "sku": "1015",
+        "categoria": "Carenagem/Plásticos",
+        "tag": "nacional",
+        "marca": "JOTAESSE",
+        "aplicacoes": "BIZ100 1998",
+        "imagens": [
+            "/data/img/1015.jpg"
+        ]
+    },
+    {
+        "codigo": "1022",
+        "codigo_oem": "199",
+        "descricao": "1022 – ADESIVO KIT VERMELHO – XLR125 1997 – JOTAESSE",
+        "valor": "20,19",
+        "sku": "1022",
+        "categoria": "Carenagem/Plásticos",
+        "tag": "nacional",
+        "marca": "JOTAESSE",
+        "aplicacoes": "XLR125 1997",
+        "imagens": [
+            "/data/img/1022.jpg"
+        ]
+    },
+    {
+        "codigo": "1023",
+        "codigo_oem": "198",
+        "descricao": "1023 – ADESIVO KIT BRANCO – XLR125 1997 – JOTAESSE",
+        "valor": "20,19",
+        "sku": "1023",
+        "categoria": "Carenagem/Plásticos",
+        "tag": "nacional",
+        "marca": "JOTAESSE",
+        "aplicacoes": "XLR125 1997",
+        "imagens": [
+            "/data/img/1023.jpg"
+        ]
+    },
+    {
+        "codigo": "10259",
+        "codigo_oem": "636",
+        "descricao": "10259 – ADESIVO KIT AZUL – TITAN150 2005 – JOTAESSE",
+        "valor": "10,11",
+        "sku": "10259",
+        "categoria": "Carenagem/Plásticos",
+        "tag": "nacional",
+        "marca": "JOTAESSE",
+        "aplicacoes": "TITAN150 2005",
+        "imagens": [
+            "/data/img/10259.jpg"
+        ]
+    },
+    {
+        "codigo": "1034",
+        "codigo_oem": "20",
+        "descricao": "1034 – ADESIVO KIT AZUL – CG125 1986 – JOTAESSE",
+        "valor": "26,24",
+        "sku": "1034",
+        "categoria": "Carenagem/Plásticos",
+        "tag": "nacional",
+        "marca": "JOTAESSE",
+        "aplicacoes": "CG125 1986",
+        "imagens": [
+            "/data/img/1034.jpg"
+        ]
+    },
+    {
+        "codigo": "10347",
+        "codigo_oem": "645",
+        "descricao": "10347 – ADESIVO KIT BRANCO – TITAN150 JOB 2005 – JOTAESSE",
+        "valor": "10,11",
+        "sku": "10347",
+        "categoria": "Carenagem/Plásticos",
+        "tag": "nacional",
+        "marca": "JOTAESSE",
+        "aplicacoes": "CG125 1986",
+        "imagens": [
+            "/data/img/10347.jpg"
         ]
     }
 ]
