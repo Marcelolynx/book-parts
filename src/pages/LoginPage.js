@@ -9,7 +9,7 @@ const LoginContainer = styled.div`
 `;
 
 const LeftSection = styled.div`
-  flex: 1;
+  flex: 2;
   background-color: #6062F6; /* Background color to match the image */
   display: flex;
   justify-content: center;
@@ -110,7 +110,7 @@ const LoginPage = ({ setAuthenticated }) => {
       setAuthenticated(true);
       navigate('/');
     } else {
-      setError('Invalid username or password');
+      setError('Usuário ou senha inválidos.');
     }
   };
 
