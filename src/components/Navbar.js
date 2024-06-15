@@ -7,7 +7,7 @@ const NavbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  background-color: #333;
+  background-color: #6062F6;
   color: white;
 `;
 
@@ -30,7 +30,7 @@ const PageTitle = styled.div`
 `;
 
 const LogoutButton = styled.button`
-  background-color: #007bff;
+  background-color: #60FF9F;
   color: white;
   border: none;
   padding: 8px 16px;

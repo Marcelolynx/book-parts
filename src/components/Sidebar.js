@@ -18,7 +18,7 @@ const iconsMap = {
 };
 
 const SidebarContainer = styled.div`
-  width: ${({ compact }) => (compact ? '90px' : '400px')};
+  width: ${({ compact }) => (compact ? '90px' : '300px')};
   height: 100vh;
   background-color: #f4f4f4;
   padding: 16px;
@@ -43,7 +43,7 @@ const Category = styled.div`
 `;
 
 const CategoryIcon = styled.div`
-  font-size: 20px;
+  font-size: 32px;
   margin-right: ${({ compact }) => (compact ? '0' : '8px')};
   margin-bottom: ${({ compact }) => (compact ? '8px' : '0')};
 `;
