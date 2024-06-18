@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Home from './pages/Home';
 import CartPage from './pages/CartPage';
 import ProductDetail from './pages/ProductDetail';
-import LoginPage from './pages/LoginPage';
+import LoginPage from './pages/Login/LoginPage';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import GlobalStyles from './styles/GlobalStyles';
