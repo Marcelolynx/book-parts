@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../../api/firebase';  // Caminho atualizado
-import { collection, getDocs, query, where, doc } from 'firebase/firestore';
+import { auth, db } from '../../api/firebase.mjs';  // Caminho atualizado
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { FaArrowRight, FaEye, FaEyeSlash } from 'react-icons/fa';
 import {
   LoginContainer,
@@ -13,7 +13,7 @@ import {
   Button,
   ErrorMessage,
   ForgotPassword
-} from './styles';
+} from './styles.js';
 
 const LoginPage = ({ setAuthenticated }) => {
   const [username, setUsername] = useState('');
@@ -36,11 +36,10 @@ const LoginPage = ({ setAuthenticated }) => {
       console.log('User email:', user.email); // Log do email do usuário
 
       // Fetch user role from Firestore
-      const docRef = doc(db, 'MotoBook-data', 'users');
-      const usersRef = collection(docRef, 'users'); // Acessando a subcoleção 'users' dentro de 'MotoBook-data/users'
+      const usersRef = collection(db, 'users'); // Ajuste o caminho da coleção
       const q = query(usersRef, where('email', '==', user.email));
       const querySnapshot = await getDocs(q);
-
+      
       console.log('Query snapshot:', querySnapshot);
       console.log('Query snapshot size:', querySnapshot.size);
 
@@ -57,7 +56,7 @@ const LoginPage = ({ setAuthenticated }) => {
         setError('No such user exists');
       }
     } catch (error) {
-      setError('Invalid username or password');
+      setError('Usuário ou senha inválido!');
       console.error('Error during login:', error);
     }
   };
@@ -65,8 +64,8 @@ const LoginPage = ({ setAuthenticated }) => {
   return (
     <LoginContainer>
       <LeftSection>
-        <h1>Eleven</h1>
-        <p>Clinic Care</p>
+        <h1>Moto</h1>
+        <p>Book</p>
       </LeftSection>
       <RightSection>
         <LoginForm>

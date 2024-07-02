@@ -84,21 +84,19 @@ const Button = styled.button`
   }
 `;
 
-const ProductCard = ({ product, addToCart }) => (
-  <Card>
-    <ProductImage src={product.imagens[0]} alt={product.descricao} />
-    <ProductDetails>
-      <ProductTitle>{product.descricao}</ProductTitle>
-      <ProductPrice>Preço: R${product.valor}</ProductPrice>
-      <ProductCode>Código: {product.codigo}</ProductCode>
-      <ProductApplication>Aplicação: {product.aplicacoes}</ProductApplication>
-    </ProductDetails>
-    <Button onClick={() => addToCart(product)}>
-      <FaShoppingCart />
-      Adicionar ao Carrinho
-    </Button>
-    <Button as={Link} to={`/product/${product.codigo}`}>Ver Detalhes</Button>
-  </Card>
-);
+const ProductCard = ({ product, addToCart }) => {
+  if (!product) {
+    return null; // Verificação para garantir que o produto existe
+  }
+
+  return (
+    <Card>
+      <ProductImage src={product.imagens && product.imagens[0] ? `/data/img/${product.imagens[0]}` : 'default-image.jpg'} alt={product.descricao} />
+      <h3>{product.descricao}</h3>
+      <p>Preço: ${product.preco}</p>
+      <button onClick={() => addToCart(product)}>Adicionar ao Carrinho</button>
+    </Card>
+  );
+};
 
 export default ProductCard;

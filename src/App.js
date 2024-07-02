@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Home from './pages/Home';
-import CartPage from './pages/CartPage';
-import ProductDetail from './pages/ProductDetail';
-import LoginPage from './pages/Login/LoginPage';
-import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
-import GlobalStyles from './styles/GlobalStyles';
+import Home from './pages/Home.js';
+import CartPage from './pages/CartPage.js';
+import ProductDetail from './pages/ProductDetail.js';
+import LoginPage from './pages/Login/LoginPage.js';
+import Navbar from './components/Navbar.js';
+import Sidebar from './components/Sidebar.js';
+import GlobalStyles from './styles/GlobalStyles.js';
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
