@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore, collection, addDoc } from 'firebase/firestore'; 
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDCYZIBpDVFv1qPb8Tl52hpRfVFc2liMKc",
@@ -15,6 +16,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 const addCategorias = async (categorias) => {
   const categoriasRef = collection(db, 'categorias');
@@ -23,4 +25,4 @@ const addCategorias = async (categorias) => {
   }
 }
 
-export { auth, db, addCategorias };
+export { auth, db, storage, addCategorias };

@@ -1,110 +1,121 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../../api/firebase.mjs';  // Caminho atualizado
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { FaArrowRight, FaEye, FaEyeSlash } from 'react-icons/fa';
-import {
-  LoginContainer,
-  LeftSection,
-  RightSection,
-  LoginForm,
-  Input,
-  Button,
-  ErrorMessage,
-  ForgotPassword
-} from './styles.js';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
-const LoginPage = ({ setAuthenticated }) => {
-  const [username, setUsername] = useState('');
+const LoginContainer = styled.div`
+  display: flex;
+  height: 100vh;
+`;
+
+const ImageContainer = styled.div`
+  flex: 1;
+  position: relative;
+  background-image: url('/data/img/harley-003.png'); /* caminho para sua imagem de fundo */
+  background-size: cover;
+  background-position: center;
+
+  &:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: black;
+  opacity: 0.85;
+  }
+`;
+
+const FormContainer = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #F8F8F8; /* cor de fundo aplicada */
+`;
+
+const Logo = styled.img`
+  width: 150px;
+  margin-bottom: 20px;
+  margin-top: -100px; /* Subir a logo 100px */
+`;
+
+const AppName = styled.h1`
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  color: #000;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 300px;
+`;
+
+const Input = styled.input`
+  margin-bottom: 20px;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc; /* Somente borda inferior */
+  border-radius: 0; /* Remove borda arredondada */
+  background-color: transparent;
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #000; /* Altera cor da borda ao focar */
+  }
+`;
+
+const Button = styled.button`
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+`;
+
+const LoginPage = () => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
   const navigate = useNavigate();
-
-  const toggleShowPassword = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    const auth = getAuth();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, username, password);
-      const user = userCredential.user;
-
-      console.log('User authenticated:', user);
-      console.log('User email:', user.email); // Log do email do usuário
-
-      // Fetch user role from Firestore
-      const usersRef = collection(db, 'users'); // Ajuste o caminho da coleção
-      const q = query(usersRef, where('email', '==', user.email));
-      const querySnapshot = await getDocs(q);
-      
-      console.log('Query snapshot:', querySnapshot);
-      console.log('Query snapshot size:', querySnapshot.size);
-
-      if (!querySnapshot.empty) {
-        querySnapshot.forEach((doc) => {
-          console.log('Document data:', doc.data());
-        });
-
-        const userData = querySnapshot.docs[0].data();
-        console.log('User data from Firestore:', userData);
-        setAuthenticated(true);
-        navigate('/');
-      } else {
-        setError('No such user exists');
-      }
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/');
     } catch (error) {
-      setError('Usuário ou senha inválido!');
-      console.error('Error during login:', error);
+      console.error('Error logging in: ', error);
     }
   };
 
   return (
     <LoginContainer>
-      <LeftSection>
-        <h1>Moto</h1>
-        <p>Book</p>
-      </LeftSection>
-      <RightSection>
-        <LoginForm>
-          <h2>login</h2>
-          {error && <ErrorMessage>{error}</ErrorMessage>}
-          <form onSubmit={handleLogin}>
-            <Input
-              type="text"
-              placeholder="usuário"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <div style={{ position: 'relative', width: '100%' }}>
-              <Input
-                type={showPassword ? 'text' : 'password'}
-                placeholder="senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <span
-                onClick={toggleShowPassword}
-                style={{
-                  position: 'absolute',
-                  right: '10px',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  cursor: 'pointer',
-                }}
-              >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </span>
-            </div>
-            <ForgotPassword href="#">esqueci a senha</ForgotPassword>
-            <Button type="submit">
-              ENTRAR <FaArrowRight />
-            </Button>
-          </form>
-        </LoginForm>
-      </RightSection>
+      <ImageContainer />
+      <FormContainer>
+        <Logo src="/data/img/bull-logo.png" alt="Logo" /> {/* caminho para sua logo */}
+        <AppName>Bull Parts</AppName>
+        <Form onSubmit={handleLogin}>
+          <Input 
+            type="email" 
+            placeholder="Login" 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+          />
+          <Input 
+            type="password" 
+            placeholder="Senha" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+          />
+          <Button type="submit">LOGIN</Button>
+        </Form>
+      </FormContainer>
     </LoginContainer>
   );
 };

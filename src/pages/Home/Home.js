@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import ProductList from '../components/ProductList.js';
-import productsData from '../data/produtos.json';
-import SearchBar from '../components/SearchBar.js';
-import CategorySearch from '../components/CategoriaSearch.js';
+import ProductList from '../../components/ProductList.js';
+import SearchBar from '../../components/SearchBar.js';
+import CategorySearch from '../../components/CategoriaSearch.js';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import { db } from '../api/firebase.mjs';
+import { db } from '../../api/firebase.mjs';
 
 const HomeContainer = styled.div`
   display: flex;

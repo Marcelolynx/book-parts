@@ -91,7 +91,7 @@ const ProductCard = ({ product, addToCart }) => {
 
   return (
     <Card>
-      <ProductImage src={product.imagens && product.imagens[0] ? `/data/img/${product.imagens[0]}` : 'default-image.jpg'} alt={product.descricao} />
+      <ProductImage src={product.imagens && product.imagens[0] ? product.imagens[0] : 'default-image.jpg'} alt={product.descricao} />
       <h3>{product.descricao}</h3>
       <p>Preço: ${product.preco}</p>
       <button onClick={() => addToCart(product)}>Adicionar ao Carrinho</button>
