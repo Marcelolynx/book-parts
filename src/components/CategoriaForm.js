@@ -53,7 +53,7 @@ const Button = styled.button`
   }
 `;
 
-const CategoriaForm = ({ onAddCategoria }) => {
+const CategoriaForm = () => {
   const [categoryName, setCategoryName] = useState('');
   const [imagem, setImagem] = useState(null);
 
@@ -74,7 +74,6 @@ const CategoriaForm = ({ onAddCategoria }) => {
       setCategoryName('');
       setImagem(null);
       alert('Categoria adicionada com sucesso!');
-      if (onAddCategoria) onAddCategoria();
     } catch (error) {
       console.error('Erro ao adicionar categoria: ', error);
       alert('Erro ao adicionar categoria.');
@@ -106,3 +105,4 @@ const CategoriaForm = ({ onAddCategoria }) => {
 };
 
 export default CategoriaForm;
+  

@@ -1,106 +1,105 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { useNavigate, Link } from 'react-router-dom';
 
-const NavbarContainer = styled.div`
+const NavbarContainer = styled.nav`
+  background-color: #fff;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #FFFFFF; /* Alterado de #4CAF50 para #FFFFFF */
-  color: black; /* Alterado de white para black */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
+const Brand = styled(Link)`
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+`;
 
 const NavLinks = styled.div`
   display: flex;
-  gap: 20px;
+  align-items: center;
 `;
 
 const NavLink = styled(Link)`
-  color: black;
+  margin-left: 20px;
+  color: #000;
   text-decoration: none;
+  font-size: 1em;
+
   &:hover {
     text-decoration: underline;
   }
 `;
 
-const UserContainer = styled.div`
+const UserMenu = styled.div`
   position: relative;
-  display: flex;
-  align-items: center;
+  display: inline-block;
 `;
 
-const UserEmail = styled.div`
+const UserButton = styled.button`
+  background: none;
+  border: none;
   cursor: pointer;
+  font-size: 1em;
+  color: #000;
 `;
 
-const Dropdown = styled.div`
+const DropdownMenu = styled.div`
+  display: none;
   position: absolute;
-  top: 100%;
   right: 0;
-  background-color: white;
-  color: black;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  display: ${props => (props.show ? 'block' : 'none')};
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+
+  ${UserMenu}:hover & {
+    display: block;
+  }
 `;
 
-const DropdownItem = styled.div`
+const DropdownItem = styled(Link)`
   padding: 10px 20px;
-  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  display: block;
+
   &:hover {
     background-color: #f1f1f1;
   }
 `;
 
-const Navbar = ({ onLogout, user }) => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+const Navbar = ({ user, onLogout }) => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log("User in Navbar: ", user); // Adicionar log
-  }, [user]);
-
-  const handleDropdownToggle = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
-  const handleAdminClick = () => {
-    setDropdownOpen(false);
-    navigate('/admin');
-  };
-
-  const handleLogoutClick = () => {
-    setDropdownOpen(false);
+  const handleLogout = () => {
     onLogout();
+    navigate('/login');
   };
 
   return (
     <NavbarContainer>
-      <NavLink to="/">Bull Parts</NavLink> 
+      <Brand to="/Dashboard">Bull Parts</Brand>
       <NavLinks>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/Dashboard">Home</NavLink>
         <NavLink to="/cart">Carrinho</NavLink>
+        {user && (
+          <UserMenu>
+            <UserButton>{`Olá, ${user.email}`}</UserButton>
+            <DropdownMenu>
+              {user.role === 'vendedor' && (
+                <>
+                  <DropdownItem to="/admin">Produtos</DropdownItem>
+                  <DropdownItem to="/admin/cadastrar-categoria">Categorias</DropdownItem>
+                </>
+              )}
+              <DropdownItem as="button" onClick={handleLogout}>Sair</DropdownItem>
+            </DropdownMenu>
+          </UserMenu>
+        )}
       </NavLinks>
-      {user && (
-        <UserContainer>
-          <UserEmail onClick={handleDropdownToggle}>
-            Olá, {user.email}
-          </UserEmail>
-          <Dropdown show={dropdownOpen}>
-            {user.role === 'vendedor' && (
-              <DropdownItem onClick={handleAdminClick}>
-                Produtos
-              </DropdownItem>
-            )}
-            <DropdownItem onClick={handleLogoutClick}>
-              Sair
-            </DropdownItem>
-          </Dropdown>
-        </UserContainer>
-      )}
     </NavbarContainer>
   );
 };

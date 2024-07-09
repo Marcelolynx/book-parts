@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Home from './pages/Home/Home.js';
-import CartPage from './pages/CartPage/CartPage.js';
-import ProductDetail from './pages/ProductDetail.js';
+import Navbar from './components/Navbar.js'; 
+import Admin from './pages/Admin/Admin.js';
 import LoginPage from './pages/Login/LoginPage.js';
-import Navbar from './components/Navbar.js';
+import Dashboard from './pages/Dashboard/Dashboard.js';
+import Home from './pages/Home/Home.js';
+import ProductDetail from './pages/Produto/ProdutoDetalhe.js';
+import CategoriaFormPage from './pages/Admin/CategoriaFormPage.js';
+import CartPage from './pages/CartPage/CartPage.js';
+
 import GlobalStyles from './styles/GlobalStyles.js';
 import styled from 'styled-components';
-import Admin from './pages/Admin/Admin.js';
-import Dashboard from './pages/Dashboard/Dashboard.js';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from './api/firebase.mjs';
@@ -30,24 +32,24 @@ const App = () => {
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        console.log("User logged in: ", user);
+      if(user) {
+        console.log("User logged in:", user);
         try {
           const userDocRef = doc(db, 'users', user.uid);
-          console.log("Fetching user document: ", userDocRef.path);
+          console.log("Fetching user documents: ", userDocRef.path);
           const userDoc = await getDoc(userDocRef);
-          if (userDoc.exists()) {
+          if(userDoc.exists()) {
             const userData = { email: user.email, role: userDoc.data().role };
-            console.log("User document data: ", userData);
-            setUser(userData);
+            console.log("User document Data: ", userData);
+            setUser(userData)
             setAuthenticated(true);
           } else {
-            console.error('No such user document!');
+            console.error("Usuário não encontrado!");
             setUser(null);
             setAuthenticated(false);
           }
         } catch (error) {
-          console.error("Error fetching user document: ", error);
+          console.error("Erro ao acessar documento: ", error);
           setUser(null);
           setAuthenticated(false);
         }
@@ -58,9 +60,7 @@ const App = () => {
       }
       setLoading(false);
     });
-
-    return () => unsubscribe();
-  }, []);
+  })
 
   const addToCart = (product) => {
     setCartItems((prevItems) => {
@@ -122,6 +122,7 @@ const App = () => {
                 <Route path="/cart" element={<CartPage cartItems={cartItems} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity} removeFromCart={removeFromCart} />} />
                 <Route path="/product/:codigo" element={<ProductDetail addToCart={addToCart} />} />
                 <Route path="/admin" element={<Admin />} />
+                <Route path="/admin/cadastrar-categoria" element={<CategoriaFormPage />} />
                 <Route path="/dashboard" element={<Dashboard />} />
               </>
             ) : (
