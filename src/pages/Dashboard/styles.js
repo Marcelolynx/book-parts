@@ -75,6 +75,7 @@ export const Card = styled.div`
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer; /* Adiciona o cursor de ponteiro para indicar que é clicável */
 `;
 
 export const Overlay = styled.div`

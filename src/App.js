@@ -60,7 +60,9 @@ const App = () => {
       }
       setLoading(false);
     });
-  })
+
+    return () => unsubscribe();
+  }, []);
 
   const addToCart = (product) => {
     setCartItems((prevItems) => {
@@ -115,7 +117,7 @@ const App = () => {
       <AppContainer>
         <MainContent>
           <Routes>
-            <Route path="/login" element={!authenticated ? <LoginPage setAuthenticated={setAuthenticated} /> : <Navigate to="/dashboard" />} />
+            <Route path="/login" element={!authenticated ? <LoginPage setAuthenticated={setAuthenticated} setUser={setUser} /> : <Navigate to="/dashboard" />} />
             {authenticated ? (
               <>
                 <Route path="/" element={<Home addToCart={addToCart} />} />
