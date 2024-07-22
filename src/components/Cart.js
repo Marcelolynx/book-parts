@@ -42,8 +42,8 @@ const Button = styled.button`
   }
 `;
 
-const Cart = ({ cartItems, incrementQuantity, decrementQuantity, removeFromCart }) => {
-  const totalAmount = cartItems.reduce((acc, item) => acc + item.valor * item.quantity, 0).toFixed(2);
+const Cart = ({ cartItems, incrementQuantity, decrementQuantity, removeFromCart, handleCheckout }) => {
+  const totalAmount = cartItems.reduce((acc, item) => acc + parseFloat(item.valor) * item.quantity, 0).toFixed(2);
 
   return (
     <CartContainer>
@@ -51,7 +51,7 @@ const Cart = ({ cartItems, incrementQuantity, decrementQuantity, removeFromCart 
         <CartItem key={item.codigo}>
           <div>
             <strong>{item.descricao}</strong>
-            <div>Valor: R${item.valor}</div>
+            <div>Valor: R${parseFloat(item.valor).toFixed(2)}</div>
             <div>Quantidade: {item.quantity}</div>
           </div>
           <div>
@@ -65,7 +65,7 @@ const Cart = ({ cartItems, incrementQuantity, decrementQuantity, removeFromCart 
         <div>Total:</div>
         <div>R${totalAmount}</div>
       </CartTotal>
-      <Button>Fechar Pedido</Button>
+      <Button onClick={handleCheckout}>Fechar Pedido</Button>
     </CartContainer>
   );
 };

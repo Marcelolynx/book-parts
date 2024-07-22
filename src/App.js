@@ -127,7 +127,8 @@ const App = () => {
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/admin/cadastrar-categoria" element={<CategoriaFormPage />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/filtro-produtos" element={<FilteredProductsPage addToCart={addToCart} />} />
+                <Route path="/filtro-produtos" element={<FilteredProductsPage addToCart={addToCart} cartItems={cartItems} />} />
+
               </>
             ) : (
               <Route path="*" element={<Navigate to="/login" />} />

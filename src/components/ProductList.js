@@ -1,15 +1,17 @@
-// src/components/ProductList.js
-
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const ProductList = ({ products, addToCart }) => {
+const ProductList = ({ products, addToCart, cartItems = [] }) => {
   const [clicked, setClicked] = useState(null);
 
   const handleAddToCart = (product) => {
     addToCart(product);
     setClicked(product.id);
     setTimeout(() => setClicked(null), 1000); // Remove a classe após 1 segundo
+  };
+
+  const isInCart = (productId) => {
+    return cartItems.some(item => item.id === productId);
   };
 
   return (
@@ -24,8 +26,9 @@ const ProductList = ({ products, addToCart }) => {
           <AddToCartButton 
             onClick={() => handleAddToCart(product)} 
             className={clicked === product.id ? 'clicked' : ''}
+            isInCart={isInCart(product.id)}
           >
-            Adicionar ao Carrinho
+            {isInCart(product.id) ? 'Adicionado' : 'Adicionar ao Carrinho'}
           </AddToCartButton>
         </ProductCard>
       ))}
@@ -86,7 +89,7 @@ const clickAnimation = keyframes`
 
 const AddToCartButton = styled.button`
   padding: 10px 0;
-  background-color: #000;
+  background-color: ${({ isInCart }) => (isInCart ? '#1CB76F' : '#000')};
   color: #fff;
   border: none;
   border-radius: 4px;

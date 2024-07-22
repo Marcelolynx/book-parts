@@ -30,12 +30,12 @@ const Dashboard = () => {
     const filtered = products.filter(product => product.categoriaId === categoryId);
     console.log('Category clicked:', categoryName);
     console.log('Filtered products:', filtered);
-    navigate('/filtro-produtos', { state: { filteredProducts: filtered, title: categoryName } });
+    navigate('/filtro-produtos', { state: { filteredProducts: filtered, title: categoryName, allProducts: products } });
   };
 
   const handleShowAllClick = () => {
     console.log('Showing all products:', products);
-    navigate('/filtro-produtos', { state: { filteredProducts: products, title: 'Todos os Produtos' } });
+    navigate('/filtro-produtos', { state: { filteredProducts: products, title: 'Todos os Produtos', allProducts: products } });
   };
 
   return (
