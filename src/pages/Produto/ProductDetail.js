@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import productsData from '../data/produtos.json';
+import productsData from '../../data/produtos.json';
 
 const ProductDetailContainer = styled.div`
   padding: 16px;

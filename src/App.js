@@ -1,6 +1,8 @@
+// src/App.js
+
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Navbar from './components/Navbar.js'; 
+import Navbar from './components/Navbar.js';
 import Admin from './pages/Admin/Admin.js';
 import LoginPage from './pages/Login/LoginPage.js';
 import Dashboard from './pages/Dashboard/Dashboard.js';
@@ -8,6 +10,7 @@ import Home from './pages/Home/Home.js';
 import ProductDetail from './pages/Produto/ProdutoDetalhe.js';
 import CategoriaFormPage from './pages/Admin/CategoriaFormPage.js';
 import CartPage from './pages/CartPage/CartPage.js';
+import FilteredProductsPage from './pages/Produto/FilteredProductsPage.js';
 
 import GlobalStyles from './styles/GlobalStyles.js';
 import styled from 'styled-components';
@@ -32,16 +35,16 @@ const App = () => {
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if(user) {
+      if (user) {
         console.log("User logged in:", user);
         try {
           const userDocRef = doc(db, 'users', user.uid);
           console.log("Fetching user documents: ", userDocRef.path);
           const userDoc = await getDoc(userDocRef);
-          if(userDoc.exists()) {
+          if (userDoc.exists()) {
             const userData = { email: user.email, role: userDoc.data().role };
             console.log("User document Data: ", userData);
-            setUser(userData)
+            setUser(userData);
             setAuthenticated(true);
           } else {
             console.error("Usuário não encontrado!");
@@ -60,8 +63,6 @@ const App = () => {
       }
       setLoading(false);
     });
-
-    return () => unsubscribe();
   }, []);
 
   const addToCart = (product) => {
@@ -117,15 +118,16 @@ const App = () => {
       <AppContainer>
         <MainContent>
           <Routes>
-            <Route path="/login" element={!authenticated ? <LoginPage setAuthenticated={setAuthenticated} setUser={setUser} /> : <Navigate to="/dashboard" />} />
+            <Route path="/login" element={!authenticated ? <LoginPage setAuthenticated={setAuthenticated} /> : <Navigate to="/dashboard" />} />
             {authenticated ? (
               <>
                 <Route path="/" element={<Home addToCart={addToCart} />} />
                 <Route path="/cart" element={<CartPage cartItems={cartItems} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity} removeFromCart={removeFromCart} />} />
-                <Route path="/product/:codigo" element={<ProductDetail addToCart={addToCart} />} />
+                <Route path="/produto/:codigo" element={<ProductDetail addToCart={addToCart} />} />
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/admin/cadastrar-categoria" element={<CategoriaFormPage />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/filtro-produtos" element={<FilteredProductsPage addToCart={addToCart} />} />
               </>
             ) : (
               <Route path="*" element={<Navigate to="/login" />} />
